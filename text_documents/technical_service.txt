@@ -1,0 +1,15 @@
+DOCUMENT: TECHNICAL SERVICE BULLETIN - BRAKING SYSTEMS (REF: TSB-2026-04)
+SUBJECT: HYBRID BRAKE PAD REPLACEMENT AND SENSOR CALIBRATION
+
+PROCEDURE A: REMOVAL
+1. Lift vehicle and remove all four wheels. 
+2. Disconnect the electronic wear sensor harness (Note: do not pull by the wires; use the plastic clip release).
+3. Retract the electronic parking brake (EPB) using the diagnostic tablet interface before compressing the caliper.
+
+PROCEDURE B: CALIBRATION
+Once new pads are installed, the technician must perform a 'Soft Reset' on the ECU.
+1. Turn ignition to ON (Position II).
+2. Press and hold the Brake Pedal and Accelerator simultaneously for 15 seconds.
+3. The dashboard should display 'BRAKE SERVICE MODE: COMPLETE'.
+
+WARNING: Failure to reset the ECU after pad replacement will result in a 'Brake Malfunction' warning light and may disable the regenerative braking system.

@@ -1,0 +1,16 @@
+DOCUMENT: GLOBAL AFTER-SALES INVENTORY POLICY (v2026.1)
+SECTION 1: SKU CLASSIFICATION METHODOLOGY
+All automotive spare parts must be categorized using a dual-axis ABC/XYZ matrix.
+- Category A: High-value items accounting for 80% of total consumption value. Requires bi-weekly cycle counts.
+- Category B: Medium-value items (15% of value). Requires quarterly auditing.
+- Category C: Low-value/High-volume items (5% of value). Managed via automated reorder points.
+
+SECTION 2: STOCKING PROTOCOLS FOR EV COMPONENTS
+Due to chemical degradation risks, Lithium-Ion battery modules (Series-E) must be stored in climate-controlled zones maintained at 18°C to 22°C. 
+Safety Stock Level (SS) = (Maximum Lead Time - Average Lead Time) × Average Daily Demand.
+If the SS drops below 15%, the "Critical Shortage" flag must be triggered in the ERP.
+
+SECTION 3: LEAD TIME ASSUMPTIONS
+- Domestic Tier-1 Suppliers: 5-7 business days.
+- International OEM Parts: 21-30 business days.
+- Localized Aftermarket Plastic Trim: 3 business days.
