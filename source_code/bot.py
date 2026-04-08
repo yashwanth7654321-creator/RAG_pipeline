@@ -31,6 +31,7 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Main RAG handler
 # -----------------------------
 async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.message.from_user.id
     conn = context.application.bot_data["conn"]
     cursor = context.application.bot_data["cursor"]
     if not context.args:
@@ -42,7 +43,7 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⏳ Thinking...")
     
     try:
-        answer = ask(query, conn, cursor)
+        answer = ask(query, conn, cursor, user_id)
         await update.message.reply_text(answer)
     
     except Exception as e:
