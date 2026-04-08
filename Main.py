@@ -29,8 +29,9 @@ if __name__ == "__main__":
     print("Indexing data...")
     index_data(conn, cursor)
     print("Data indexed successfully. You can now ask questions.")
-    run_bot(BOT_TOKEN, conn, cursor)
     client, collection = create_cache_DB()
+    run_bot(BOT_TOKEN, conn, cursor, collection)
+    
     
     while True:
         query = input("Ask a question: ")
