@@ -34,6 +34,8 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.from_user.id
     conn = context.application.bot_data["conn"]
     cursor = context.application.bot_data["cursor"]
+    collection = context.application.bot_data["collection"]
+
     if not context.args:
         await update.message.reply_text("❗ Please provide a question.\nExample: /ask What is leave policy?")
         return
@@ -43,7 +45,7 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⏳ Thinking...")
     
     try:
-        answer = ask(query, conn, cursor, user_id)
+        answer = ask(query, conn, cursor, user_id, collection)
         await update.message.reply_text(answer)
     
     except Exception as e:
@@ -58,11 +60,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.message.text
     conn = context.application.bot_data["conn"]
     cursor = context.application.bot_data["cursor"]
+    collection = context.application.bot_data["collection"]
     
     await update.message.reply_text("⏳ Thinking...")
     
     try:
-        answer = ask(query, conn, cursor, user_id)
+        answer = ask(query, conn, cursor, user_id, collection)
         await update.message.reply_text(answer)
         print(user_id)
     
@@ -74,10 +77,11 @@ async def stop(update : Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------
 # Run bot
 # -----------------------------
-def run_bot(token, conn, cursor):
+def run_bot(token, conn, cursor, collection):
     app = ApplicationBuilder().token(token).build()
     app.bot_data["conn"] = conn
     app.bot_data["cursor"] = cursor
+    app.bot_data["collection"] = collection
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("ask", ask_command))
