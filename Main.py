@@ -29,7 +29,7 @@ if __name__ == "__main__":
     print("Indexing data...")
     index_data(conn, cursor)
     print("Data indexed successfully. You can now ask questions.")
-    #run_bot(BOT_TOKEN, conn, cursor)
+    run_bot(BOT_TOKEN, conn, cursor)
     client, collection = create_cache_DB()
     
     while True:
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         if cached_response:
             print("\n Answer: ", cached_response)
         else:
-            user_id = 1
+            #user_id = Dummy_user
             response = ask(query, conn, cursor, user_id, collection)
             print("\n Answer: ", response)
             print("History for local_user:", get_history("local_user"))
