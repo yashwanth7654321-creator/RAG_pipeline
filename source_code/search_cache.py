@@ -1,7 +1,7 @@
 from source_code.embedder import embed_text
 from config import CACHE_THRESHOLD
 
-def search_cache(query :  str, client, collection):
+def search_cache(query :  str, collection):
     query_embed = embed_text(query).tolist()
     results = collection.query(
         query_embeddings = [query_embed],

@@ -1,6 +1,6 @@
 def create_prompt(query, retrived_chunks, history):
     history_text = "\n".join([f"{msg['role']} : {msg['content']}" for msg in history])
-    context = "\n\n".join([chunk for chunk, _ in retrived_chunks])
+    context = "\n\n".join([chunk for chunk in retrived_chunks])
     prompt = f"""You are a helpful assistant.
     Rules:
     - Use the context as the primary source.

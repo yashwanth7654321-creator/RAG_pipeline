@@ -17,4 +17,6 @@ def retrive(query, conn, cursor):
         score.append((chunk, sim_score))
 
     score_list = sorted(score, key = lambda x: x[1], reverse = True)
-    return score_list[:TOP_K]
+    top_score = score_list[:TOP_K]
+    retrived_chunks = [chunk for chunk, _ in top_score]
+    return retrived_chunks

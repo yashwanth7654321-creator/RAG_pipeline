@@ -2,6 +2,7 @@ import logging
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 from source_code.pipeline import ask
+from source_code.search_cache import search_cache
 
 # -----------------------------
 # Setup logging
@@ -45,8 +46,14 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⏳ Thinking...")
     
     try:
-        answer = ask(query, conn, cursor, user_id, collection)
-        await update.message.reply_text(answer)
+        cached_response = search_cache(query, collection)
+
+        if cached_response:
+            await update.message.reply_text(f"⚡ (Cached)\n{cached_response}")
+            return
+        else:
+            answer = ask(query, conn, cursor, user_id, collection)
+            await update.message.reply_text(answer[0])
     
     except Exception as e:
         await update.message.reply_text(f"❌ Error: {str(e)}")
@@ -65,9 +72,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("⏳ Thinking...")
     
     try:
-        answer = ask(query, conn, cursor, user_id, collection)
-        await update.message.reply_text(answer)
-        print(user_id)
+        cached_response = search_cache(query, collection)
+
+        if cached_response:
+            await update.message.reply_text(f"⚡ (Cached)\n{cached_response}")
+            return
+        else:
+            answer = ask(query, conn, cursor, user_id, collection)
+            await update.message.reply_text(answer[0])
+            print(user_id)
     
     except Exception as e:
         await update.message.reply_text(f"❌ Error: {str(e)}")
