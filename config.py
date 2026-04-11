@@ -1,7 +1,7 @@
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 DB_PATH = "rag.db"
 CACHE_DB_PATH = "semantic_cache.db"
-TEXT_DATA_PATH = "text_documents"
+TEXT_DATA_PATH = "knowledge"
 TOP_K = 3
 CHUNK_SIZE = 50
 CHUNK_OVERLAP = int(CHUNK_SIZE * 0.2)
