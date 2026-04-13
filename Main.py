@@ -4,14 +4,13 @@ from source_code.chunker import chunk_text
 from source_code.embedder import embed_text
 from source_code.database import create_db, create_table, store_embeddings, text_normalizer
 from source_code.pipeline import ask
-from source_code.bot import run_bot
 from source_code.cache_DB import create_cache_DB
 from source_code.search_cache import search_cache
 from source_code.msg_history import get_history
 from source_code.mlflow_logger import start_experiment, log_params, log_metrics, log_artifacts, set_attributes
 from source_code.evaluation import llm_evaluate
 from source_code.token_counter import count_rag_tokens
-from config import BOT_TOKEN, CHUNK_SIZE, LLM_MODEL, EMBEDDING_MODEL, TOP_K, USE_MLFLOW
+from config import CHUNK_SIZE, LLM_MODEL, EMBEDDING_MODEL, TOP_K, USE_MLFLOW, CHUNK_OVERLAP
 
 
 def index_data(conn, cursor):
@@ -29,7 +28,7 @@ def index_data(conn, cursor):
 
 if __name__ == "__main__":
     conn , cursor = create_db()
-    create_table(conn, cursor)
+    create_table(conn, cursor, )
     print("Indexing data...")
     index_data(conn, cursor)
     print("Data indexed successfully. You can now ask questions.")
@@ -45,16 +44,19 @@ if __name__ == "__main__":
         if cached_response:
             print("\n Answer: ", cached_response)
         else:
-            user_id = "local_user"
-            response, retrived_chunks, retrival_time, generation_time = ask(query, conn, cursor, 
-                                                                            user_id, collection)
+
             params = {
                     "embedding_model": EMBEDDING_MODEL,
                     "llm": LLM_MODEL,
                     "chunk_size": CHUNK_SIZE,
-                    "top_k": TOP_K
-                    }
-            
+                    "top_k": TOP_K,
+                    "overlap": CHUNK_OVERLAP
+                    }            
+                     
+            user_id = "local_user"
+            response, retrived_chunks, retrival_time, generation_time = ask(query, conn, cursor, 
+                                                                            user_id, collection) 
+                      
             attributes = { 
                         "Dataset": "Indian_tourism",
                         "Version": "v1.0",
@@ -66,6 +68,7 @@ if __name__ == "__main__":
                 run = start_experiment()
                 log_params(params)
                 set_attributes(attributes)
+                response = ask(query, conn, cursor, user_id, collection)
                 scores = llm_evaluate(query, response, retrived_chunks)
                 tokens_data = count_rag_tokens(query, retrived_chunks, response)
                 metrics = {
