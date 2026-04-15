@@ -36,6 +36,7 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     conn = context.application.bot_data["conn"]
     cursor = context.application.bot_data["cursor"]
     collection = context.application.bot_data["collection"]
+    config = context.application.bot_data["config"]
 
     if not context.args:
         await update.message.reply_text("❗ Please provide a question.\nExample: /ask What is leave policy?")
@@ -52,7 +53,7 @@ async def ask_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"⚡ (Cached)\n{cached_response}")
             return
         else:
-            answer = ask(query, conn, cursor, user_id, collection)
+            answer = ask(query, conn, cursor, user_id, collection, config)
             await update.message.reply_text(answer[0])
     
     except Exception as e:
@@ -68,6 +69,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     conn = context.application.bot_data["conn"]
     cursor = context.application.bot_data["cursor"]
     collection = context.application.bot_data["collection"]
+    config = context.application.bot_data["config"]    
     
     await update.message.reply_text("⏳ Thinking...")
     
@@ -78,7 +80,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"⚡ (Cached)\n{cached_response}")
             return
         else:
-            answer = ask(query, conn, cursor, user_id, collection)
+            answer = ask(query, conn, cursor, user_id, collection, config)
             await update.message.reply_text(answer[0])
             print(user_id)
     
@@ -90,11 +92,12 @@ async def stop(update : Update, context: ContextTypes.DEFAULT_TYPE):
 # -----------------------------
 # Run bot
 # -----------------------------
-def run_bot(token, conn, cursor, collection):
+def run_bot(token, conn, cursor, collection, config):
     app = ApplicationBuilder().token(token).build()
     app.bot_data["conn"] = conn
     app.bot_data["cursor"] = cursor
     app.bot_data["collection"] = collection
+    app.bot_data["config"] = config
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("ask", ask_command))
