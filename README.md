@@ -118,10 +118,3 @@ Important values in `config.py`:
 - Make sure `ollama` is installed and the configured model is available.
 - If embeddings are not found, rerun `python main.py` to rebuild `rag.db`.
 
-## Recommended Next Steps
-
-- Add a top-level `README.md` (this file)
-- Add test coverage for retrieval and prompt generation
-- Improve prompt formatting and response handling
-- Persist chat history across restarts if needed
-- Add better doc provenance display in answers
