@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/candy/Documents/Data_science_TRaining/RAG_pipline/mlruns/565322584275428697/1ee1fb5446b74afe9a9fe4104d3ded12/artifacts
+end_time: 1776254444121
+entry_point_name: ''
+experiment_id: '565322584275428697'
+lifecycle_stage: active
+run_id: 1ee1fb5446b74afe9a9fe4104d3ded12
+run_name: dashing-lynx-166
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776254340411
+status: 3
+tags: []
+user_id: yashwanth

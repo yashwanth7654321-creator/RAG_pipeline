@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/candy/Documents/Data_science_TRaining/RAG_pipline/mlruns/893899897787877743/adad53f0138a4169ac3f38d54a38905f/artifacts
+deleted_time: 1776252886053
+end_time: 1776105162553
+entry_point_name: ''
+experiment_id: '893899897787877743'
+lifecycle_stage: deleted
+run_id: adad53f0138a4169ac3f38d54a38905f
+run_name: nebulous-shark-827
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776105162435
+status: 3
+tags: []
+user_id: yashwanth

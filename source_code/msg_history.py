@@ -1,12 +1,12 @@
 from config import MAX_HISTORY
-from config import MAX_RESPONSE_TOKENS
+from config import MAX_HISTORY_TOKENS
 
 chat_memory = {}
 
 def summarize_text(text):
-    if len(text) <= MAX_RESPONSE_TOKENS:
+    if len(text) <= MAX_HISTORY_TOKENS:
         return text
-    return text[:MAX_RESPONSE_TOKENS] + "..."
+    return text[:MAX_HISTORY_TOKENS] + "..."
 
 def add_message(user_id, role, message):
     if user_id not in chat_memory:

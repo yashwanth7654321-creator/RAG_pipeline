@@ -1,12 +1,12 @@
 
-from config import CHUNK_SIZE
-from config import CHUNK_OVERLAP
+def chunk_text(text, config):
 
-step = CHUNK_SIZE - CHUNK_OVERLAP
+    chunk_size = config["chunk_size"]
+    overlap = config["overlap"]
+    step = chunk_size - overlap
 
-def chunk_text(text):
     to_list = text.split()
     chunk =[]
     for i in range(0, len(to_list), step):
-        chunk.append(" ".join(to_list[i:i+CHUNK_SIZE]))
+        chunk.append(" ".join(to_list[i:i+chunk_size]))
     return chunk

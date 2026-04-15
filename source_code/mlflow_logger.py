@@ -1,11 +1,6 @@
 import mlflow
-from dataclasses import dataclass
-from config import EMBEDDING_MODEL
-
-def  set_attributes(attributes):
-    mlflow.set_tag("Dataset", attributes["Dataset"])
-    mlflow.set_tag("Version", attributes["Version"])
-    mlflow.set_tag("Embedding_model", attributes["Model"])
+def set_attributes(attributes):
+    mlflow.set_tags(attributes)
 
 def start_experiment():
     mlflow.set_experiment("RAG_experiment")

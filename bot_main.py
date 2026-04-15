@@ -1,12 +1,13 @@
 from source_code.database import create_db, create_table
 from source_code.cache_DB import create_cache_DB
 from source_code.bot import run_bot
-import os
 from dotenv import load_dotenv
+import os
+
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
-    raise RuntimeError("BOT_TOKEN is not set. Please add it to .env or the environment.")
+    raise RuntimeError("BOT_TOKEN is not set. Please add it to .env file.")
 
 
 def main():

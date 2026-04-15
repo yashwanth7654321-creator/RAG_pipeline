@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/candy/Documents/Data_science_TRaining/RAG_pipline/mlruns/565322584275428697/efd1e181fad94e0eb783581ef10f27f1/artifacts
+deleted_time: 1776252901295
+end_time: 1776251705100
+entry_point_name: ''
+experiment_id: '565322584275428697'
+lifecycle_stage: deleted
+run_id: efd1e181fad94e0eb783581ef10f27f1
+run_name: mercurial-wren-299
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776251705009
+status: 4
+tags: []
+user_id: yashwanth

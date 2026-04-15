@@ -7,9 +7,10 @@ def cosine_similarity(a, b):
     dot_product = np.dot(a,b)
     return dot_product
 
-def retrive(query, conn, cursor):
+def retrive(query, conn, cursor, chunk_size, overlap, top_k):
+
     query_vector = embed_text(query)
-    data = fetch_all_embeddings(conn, cursor)
+    data = fetch_all_embeddings(conn, cursor, chunk_size, overlap)
     score = []
 
     for chunk, vector in data:
@@ -17,6 +18,6 @@ def retrive(query, conn, cursor):
         score.append((chunk, sim_score))
 
     score_list = sorted(score, key = lambda x: x[1], reverse = True)
-    top_score = score_list[:TOP_K]
+    top_score = score_list[:top_k]
     retrived_chunks = [chunk for chunk, _ in top_score]
     return retrived_chunks

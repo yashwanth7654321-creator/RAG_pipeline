@@ -1,0 +1,1 @@
+& C:/Users/candy/anaconda3/envs/rag_env/python.exe c:/Users/candy/Documents/Data_science_TRaining/RAG_pipline/main.py

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/candy/Documents/Data_science_TRaining/RAG_pipline/mlruns/565322584275428697/13b77bd129814b829699a7df28439a62/artifacts
+end_time: 1776260001729
+entry_point_name: ''
+experiment_id: '565322584275428697'
+lifecycle_stage: active
+run_id: 13b77bd129814b829699a7df28439a62
+run_name: silent-snake-730
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1776259882380
+status: 3
+tags: []
+user_id: yashwanth
