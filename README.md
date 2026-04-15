@@ -118,3 +118,6 @@ Important values in `config.py`:
 - Make sure `ollama` is installed and the configured model is available.
 - If embeddings are not found, rerun `python main.py` to rebuild `rag.db`.
 
+## Project demo
+
+![Demo screenshot](image.png)
